@@ -47,10 +47,12 @@ class Person {
     this.stomach = [];
   }
   eat(someFood) {
-    if (this.stomach.length >= 11) {
-      this.poop()
-    } else {
+    if (this.stomach.length <= 9) {
       this.stomach.push(someFood)
+    } else if (this.stomach.length >= 10) {
+      return `Max stomach capacity has been reached`
+    } else {
+      this.poop()
     }
   }
   poop() {
@@ -84,6 +86,12 @@ class Car {
   }
   fill(gallons) {
     return this.tank += gallons;
+  }
+  drive(distance) {
+    this.odometer = 50;
+    if (this.tank == 0) {
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
   }
 }
 
